@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import styles from './SplashScreen.module.css';
 import HeroCanvas from '../HeroCanvas';
+import * as THREE from 'three';
+import CLOUDS from 'vanta/dist/vanta.clouds.min';
 
 interface SplashScreenProps {
   onEnter: () => void;
@@ -14,6 +16,32 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onEnter }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const vantaRef = useRef<any>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!vantaRef.current && backgroundRef.current) {
+      vantaRef.current = CLOUDS({
+        el: backgroundRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        skyColor: 0x4966ff,
+        cloudColor: 0x89,
+        speed: 1.0
+      });
+    }
+
+    return () => {
+      if (vantaRef.current) {
+        vantaRef.current.destroy();
+      }
+    };
+  }, []);
 
   useEffect(() => {
     // Simulate loading time
@@ -53,12 +81,12 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onEnter }) => {
     >
       <div className={styles.grainOverlay} />
       <motion.div 
+        ref={backgroundRef}
         className={styles.background}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <div className={styles.backgroundImage} />
         <div className={styles.overlay} />
       </motion.div>
       

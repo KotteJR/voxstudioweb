@@ -55,20 +55,20 @@ const LogoModel: React.FC<LogoModelProps> = ({ scale = 1 }) => {
       <mesh geometry={mergedGeometry}>
         <meshPhysicalMaterial
           transparent
-          transmission={0.95}
+          transmission={0.92}
           thickness={0.5}
-          roughness={0.1}
-          ior={1.5}
-          envMapIntensity={2}
+          roughness={0.05}
+          ior={1.6}
+          envMapIntensity={3}
           clearcoat={1}
           clearcoatRoughness={0.1}
           attenuationColor="#ffffff"
           attenuationDistance={0.5}
-          metalness={0.05}
+          metalness={0.2}
           opacity={1}
           sheen={1}
-          sheenRoughness={0.5}
-          specularIntensity={1}
+          sheenRoughness={0.25}
+          specularIntensity={1.5}
           specularColor="#ffffff"
         />
       </mesh>
