@@ -1,6 +1,7 @@
 .contactUs {
   padding: 6rem 2rem;
-  background: #fff;
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -10,21 +11,22 @@
 }
 
 .subtitle {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fff;
   margin-bottom: 0.5rem;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 300;
   margin-bottom: 1rem;
-  color: #000;
+  color: #fff;
 }
 
 .description {
   font-size: 1.125rem;
-  color: #666;
+  color: #fff;
   margin-bottom: 3rem;
 }
 
@@ -48,7 +50,7 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.875rem;
-  color: #000;
+  color: #fff;
   margin-bottom: 0.5rem;
 }
 
@@ -59,37 +61,43 @@
 .input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   font-size: 1rem;
-  color: #000;
-  transition: border-color 0.2s ease;
+  color: #fff;
+  background: rgba(0, 0, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
 }
 
 .input::placeholder {
-  color: #999;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .input:focus {
   outline: none;
-  border-color: #000;
+  border-color: #fff;
+  background: rgba(0, 0, 255, 0.15);
 }
 
 .textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   font-size: 1rem;
-  color: #000;
+  color: #fff;
+  background: rgba(0, 0, 255, 0.1);
+  backdrop-filter: blur(10px);
   min-height: 120px;
   resize: vertical;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .textarea:focus {
   outline: none;
-  border-color: #000;
+  border-color: #fff;
+  background: rgba(0, 0, 255, 0.15);
 }
 
 .checkbox {
@@ -109,29 +117,36 @@
 
 .checkboxLabel {
   font-size: 0.875rem;
-  color: #666;
+  color: #fff;
 }
 
 .privacyLink {
-  color: #000;
+  color: #fff;
   text-decoration: underline;
 }
 
 .submitButton {
-  width: 100%;
-  padding: 1rem;
-  background: #000;
+  background: rgba(0, 0, 255, 0.1);
+  backdrop-filter: blur(10px);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: none;
 }
 
 .submitButton:hover {
-  background: #333;
+  background: rgba(0, 0, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.submitButton:active {
+  transform: translateY(0);
 }
 
 @media (max-width: 768px) {

@@ -1,38 +1,28 @@
 .about {
-  background: #fff;
-  padding: 8rem 2rem;
+  padding: 6rem 2rem;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 2rem;
 }
 
-.category {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
 .title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
   line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #fff;
 }
 
 .description {
-  font-size: 1.125rem;
-  color: #666;
-  max-width: 800px;
-  margin: 0 auto;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
 }
 
@@ -74,7 +64,7 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  background: #000;
+  background: #080000;
   color: white;
   height: 280px;
   transition: transform 0.3s ease;

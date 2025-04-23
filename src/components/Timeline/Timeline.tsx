@@ -27,8 +27,8 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({
-  heading = "Experience the difference with us",
-  description = "We believe in creating lasting partnerships with our clients, focusing on long-term success through collaborative innovation and dedicated support.",
+  heading = "Voice Production for Modern Teams",
+  description = "An all-in-one platform that simplifies briefing, voice generation, scripting, and feedback — empowering teams to produce studio-grade AI voiceovers, faster.",
   buttons = {
     primary: {
       text: "Start Now",
@@ -41,24 +41,24 @@ const Timeline: React.FC<TimelineProps> = ({
   },
   features = [
     {
-      image: "/images/placeholder.jpg",
-      title: "Dedicated Support",
-      description: "Expanded operations to 5 new countries, reaching millions of new users.",
+      image: "/images/description.png",
+      title: "Describe your ideal voice.",
+      description: "Users outline what they need: accent, tone, gender, language, style, and emotional nuance. Our AI uses this to generate a tailor-fit voice profile.",
     },
     {
-      image: "/images/placeholder.jpg",
-      title: "Series B Funding",
-      description: "Secured $50M in Series B funding to accelerate product development.",
+      image: "/images/voice1.png",
+      title: "Choose your voice.",
+      description: "Based on your brief, we generate tailored AI voice options. Preview and pick the one that fits. Custom or base, it's all yours.",
     },
     {
-      image: "/images/placeholder.jpg",
-      title: "Product Launch",
-      description: "Successfully launched our flagship product to market.",
+      image: "/images/script.png",
+      title: "Tell us what to say.",
+      description: "Clients upload their finalized script or draft, and optionally timestamp key moments. This guides how the voiceover will be performed.",
     },
     {
-      image: "/images/placeholder.jpg",
-      title: "Company Founded",
-      description: "Started with a vision to revolutionize the industry.",
+      image: "/images/feedback.png",
+      title: "Refine to perfection.",
+      description: "Provide targeted feedback on voice performance. We revise and iterate until it meets your expectations.",
     },
   ],
 }) => {

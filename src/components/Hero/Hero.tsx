@@ -1,79 +1,61 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Hero.module.css';
-import { BsChevronDown } from 'react-icons/bs';
-
-const words = [
-  "Audiobooks",
-  "Advertisements",
-  "SSM",
-];
 
 const Hero: React.FC = () => {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className={styles.hero}>
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={styles.videoBackground}
-      >
-        <source src="/videos/hero-background.mp4" type="video/mp4" />
-      </video>
-      
       <div className={styles.content}>
-        <div className={styles.textContent}>
-          <h1 className={styles.staticTitle}>
-            We help you to hire top
-          </h1>
-          <div className={styles.dynamicTitle}>
-            {words.map((word, index) => (
-              <span
-                key={word}
-                className={`${styles.word} ${index === currentWordIndex ? styles.wordVisible : ''}`}
-              >
-                {word}
-              </span>
-            ))}
-          </div>
-          <p className={styles.subtitle}>
-            Discover exceptional talent, fast.
+        <h1 className={styles.mainHeading}>
+          AI-Powered Voiceover Localization for the Adriatic Region
+        </h1>
+        <div className={styles.rightContent}>
+          <p className={styles.description}>
+            Bring your campaigns to life in Serbian, Croatian, Bosnian, Slovenian, Macedonian, and Bulgarian — with native-level nuance, cultural accuracy, and studio-grade quality, powered by AI and refined by humans.
           </p>
-        </div>
-
-        <div className={styles.cta}>
-          <a href="#join" className={styles.primaryButton}>
-            JOIN OUR NETWORK
-          </a>
-          <a href="#hire" className={styles.secondaryButton}>
-            HIRE TOP TALENT
-          </a>
+          <div className={styles.buttonContainer}>
+            <a href="/contact" className={styles.button}>
+              Contact Us
+              <svg 
+                className={styles.arrow}
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M13.5 19L20.5 12L13.5 5M3.5 12H20" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+            <a href="/demo" className={styles.button}>
+              Request Demo
+              <svg 
+                className={styles.arrow}
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M13.5 19L20.5 12L13.5 5M3.5 12H20" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
-
-      <button onClick={scrollToAbout} className={styles.scrollPrompt}>
-        <span>SCROLL TO EXPLORE</span>
-        <BsChevronDown className={styles.scrollIcon} />
-      </button>
     </section>
   );
 };

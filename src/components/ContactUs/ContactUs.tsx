@@ -40,7 +40,7 @@ const ContactUs: React.FC = () => {
         <div className={styles.subtitle}>Reach Out to Us</div>
         <h2 className={styles.title}>We're Here to Help</h2>
         <p className={styles.description}>
-          Please fill out the form below, and we will get back to you soon.
+        We don’t offer fixed packages — every quote is tailored to your campaign’s scope, complexity, and creative needs.
         </p>
 
         <form className={styles.form} onSubmit={handleSubmit}>

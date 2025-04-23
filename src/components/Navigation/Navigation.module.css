@@ -10,12 +10,12 @@
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .nav.solid {
@@ -32,15 +32,22 @@
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
   text-decoration: none;
-  transition: all 0.3s ease;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: auto;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav.solid .logo {
-  color: #000;
+  color: #080000;
 }
 
 .logo:hover {
@@ -66,7 +73,7 @@
 }
 
 .nav.solid .navLink {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(8, 0, 0, 0.7);
 }
 
 .navLink:hover {
@@ -74,7 +81,7 @@
 }
 
 .nav.solid .navLink:hover {
-  color: #000;
+  color: #080000;
 }
 
 .mobileMenuButton {
@@ -89,7 +96,7 @@
 }
 
 .nav.solid .mobileMenuButton {
-  color: #000;
+  color: #080000;
 }
 
 @media (max-width: 768px) {

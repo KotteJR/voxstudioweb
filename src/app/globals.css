@@ -1,26 +1,170 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --foreground: #000000;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --secondary-glow: conic-gradient(
+    from 10deg at 50% 50%,
+    #0066ff 0deg,
+    #ffffff 55deg,
+    #0066ff 120deg,
+    #ffffff 160deg,
+    #0066ff 360deg
+  );
+  --third-glow: conic-gradient(
+    from 90deg at 50% 50%,
+    #ffffff 0deg,
+    #0066ff 160deg,
+    #ffffff 120deg,
+    #0066ff 55deg,
+    #ffffff 360deg
+  );
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #000000;
   }
 }
 
+html {
+  overflow-y: scroll;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+
 body {
-  background: var(--background);
+  overflow-y: visible;
+  position: relative;
+  height: unset;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-montserrat);
+  font-optical-sizing: auto;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+body::before {
+  background: var(--third-glow);
+  border-radius: 50%;
+  width: 50vw;
+  height: 50vw;
+  margin-left: -200px;
+  filter: blur(90px);
+  top: calc(50vh - 50vw/2);
+  left: calc(50vw);
+  animation: animateBefore 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
+}
+
+body::after {
+  background: var(--secondary-glow);
+  border-radius: 50%;
+  width: 500px;
+  height: 700px;
+  filter: blur(90px);
+  top: calc(50vh - 50vw/2);
+  left: calc(50vw - 50vw/2);
+  animation: animateAfter 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
+}
+
+@keyframes animateBefore {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(200px) scale(0.8);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animateAfter {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-250px) scale(1.2);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat);
+  font-optical-sizing: auto;
+}
+
+p {
+  font-family: var(--font-montserrat);
+  font-optical-sizing: auto;
+  opacity: 0.9;
+}
+
+main {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background: transparent;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(0, 102, 255, 0.2));
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+/* Remove all section-specific gradients */
+
+h1, h2, h3, h4, h5, h6, span, a, div {
+  color: var(--foreground);
+}
+
+a {
+  color: var(--foreground);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
 }

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './Navigation.module.css';
+import Image from 'next/image';
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +46,13 @@ const Navigation: React.FC = () => {
     <nav className={navClass}>
       <div className={styles.container}>
         <a href="#" className={styles.logo} onClick={() => scrollToSection('hero')}>
-          VoxStudios
+          <Image 
+            src="/images/logo.png" 
+            alt="VoxStudios Logo" 
+            width={160} 
+            height={40} 
+            className={styles.logoImage}
+          />
         </a>
         <button className={styles.mobileMenuButton} onClick={toggleMenu}>
           ☰
