@@ -49,7 +49,7 @@ const AIDemo: React.FC = () => {
         <div className={styles.textContent}>
           <h1 className={styles.title}>Voiceover Localization </h1>
           <p className={styles.description}>
-            Don&apos;t just imagine the future of voice technology - experience it today. Our AI-powered solutions are transforming how we interact with technology.
+            Bring your campaigns to life in Serbian, Croatian, Bosnian, Slovenian, Macedonian, and Bulgarian — with native-level nuance, cultural accuracy, and studio-grade quality, powered by AI and refined by humans.
           </p>
         </div>
         <div className={styles.videoContainer}>

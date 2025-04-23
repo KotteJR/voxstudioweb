@@ -5,9 +5,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 import SplashScreen from '@/components/SplashScreen/SplashScreen';
 import HorizontalScroll from '@/components/HorizontalScroll/HorizontalScroll';
 import HorizontalScroll2 from '@/components/HorizontalScroll2/HorizontalScroll2';
-import VoiceProcess2 from '@/components/VoiceProcess/VoiceProcess2';
+import About from '@/components/About/About';
 import AudioEngineering from '@/components/AudioEngineering/AudioEngineering';
+import VoiceProcess2 from '@/components/VoiceProcess/VoiceProcess2';
 import ContactUs from '@/components/ContactUs/ContactUs';
+import Footer from '@/components/Footer/Footer';
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -33,6 +35,7 @@ export default function Home() {
             <VoiceProcess2 />
             <AudioEngineering />
             <ContactUs />
+            <Footer />
           </motion.div>
         )}
       </AnimatePresence>

@@ -11,7 +11,8 @@ const About: React.FC = () => {
         <div className={styles.header}>
           <h2 className={styles.title}>Modern solutions. Timeless design.</h2>
           <p className={styles.description}>
-            We&apos;re not just another voice-over company - we&apos;re your strategic partner in creating impactful, culturally resonant content.
+            Residential, commercial, and urban planning. Transform spaces into experiences with our
+            comprehensive architectural solutions.
           </p>
         </div>
         
