@@ -35,6 +35,7 @@ export default function Home() {
             <VoiceProcess2 />
             <AudioEngineering />
             <ContactUs />
+            <Footer />
           </motion.div>
         )}
       </AnimatePresence>
