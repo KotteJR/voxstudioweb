@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import "../styles/globals.css";
+import "./globals.css";
 import GradientBackground from '@/components/Background/GradientBackground'
 
 const montserrat = Montserrat({ 
@@ -22,7 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <GradientBackground />
-        {children}
+        <div style={{ position: 'relative', zIndex: 0 }}>
+          {children}
+        </div>
       </body>
     </html>
   );
