@@ -7,13 +7,14 @@ import styles from './SplashScreen.module.css';
 import HeroCanvas from '../HeroCanvas';
 
 interface SplashScreenProps {
-  onEnter: () => void;
+  onEnter?: () => void;
 }
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ onEnter }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     // Simulate loading time
@@ -38,10 +39,13 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onEnter }) => {
     setIsDropdownOpen(false);
   };
 
-  const handleEnter = () => {
-    if (selectedLanguage) {
-      onEnter();
-    }
+  const handleClick = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      if (onEnter) {
+        onEnter();
+      }
+    }, 1000);
   };
 
   return (
@@ -114,7 +118,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onEnter }) => {
                 
                 <motion.button
                   className={`${styles.enterButton} ${selectedLanguage ? styles.active : ''}`}
-                  onClick={handleEnter}
+                  onClick={handleClick}
                   disabled={!selectedLanguage}
                   whileHover={selectedLanguage ? { scale: 1.05 } : {}}
                   whileTap={selectedLanguage ? { scale: 0.95 } : {}}
