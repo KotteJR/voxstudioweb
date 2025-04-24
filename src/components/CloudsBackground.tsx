@@ -15,127 +15,55 @@ const CloudsBackground = () => {
 
   return (
     <group ref={groupRef}>
-      {/* Center clouds */}
+      {/* Main cloud layer */}
       <Clouds material={THREE.MeshStandardMaterial}>
         <Cloud
-          segments={60}
+          segments={50}
           bounds={[120, 60, 60]}
-          volume={30}
-          color="#4966ff"
+          volume={25}
+          color="#ffffff"
           fade={20}
           speed={0.08}
-          opacity={0.4}
+          opacity={0.6}
           position={[0, 0, 0]}
         />
         <Cloud
-          segments={60}
+          segments={50}
           bounds={[100, 50, 50]}
-          volume={25}
-          color="white"
+          volume={20}
+          color="#4966ff"
           fade={20}
           speed={0.1}
-          opacity={0.3}
-          position={[0, 10, 0]}
+          opacity={0.4}
+          position={[0, 10, -20]}
         />
       </Clouds>
 
-      {/* Left side clouds */}
+      {/* Background clouds */}
       <Clouds material={THREE.MeshStandardMaterial}>
         <Cloud
-          segments={60}
-          bounds={[100, 60, 60]}
-          volume={25}
-          color="#4966ff"
-          fade={20}
-          speed={0.06}
-          opacity={0.35}
-          position={[-80, -20, -20]}
-        />
-        <Cloud
-          segments={50}
-          bounds={[80, 40, 40]}
-          volume={20}
-          color="white"
-          fade={20}
-          speed={0.09}
-          opacity={0.25}
-          position={[-60, 0, -40]}
-        />
-      </Clouds>
-
-      {/* Right side clouds */}
-      <Clouds material={THREE.MeshStandardMaterial}>
-        <Cloud
-          segments={60}
-          bounds={[100, 60, 60]}
-          volume={25}
-          color="#4966ff"
-          fade={20}
-          speed={0.07}
-          opacity={0.35}
-          position={[80, -10, -30]}
-        />
-        <Cloud
-          segments={50}
-          bounds={[80, 40, 40]}
-          volume={20}
-          color="white"
-          fade={20}
-          speed={0.08}
-          opacity={0.25}
-          position={[60, 20, -20]}
-        />
-      </Clouds>
-
-      {/* Back clouds */}
-      <Clouds material={THREE.MeshStandardMaterial}>
-        <Cloud
-          segments={70}
+          segments={40}
           bounds={[150, 70, 40]}
-          volume={20}
-          color="#8099ff"
+          volume={15}
+          color="#ffffff"
           fade={25}
           speed={0.05}
-          opacity={0.3}
-          position={[0, -30, -60]}
-        />
-        <Cloud
-          segments={60}
-          bounds={[120, 50, 30]}
-          volume={15}
-          color="#4966ff"
-          fade={25}
-          speed={0.04}
-          opacity={0.25}
-          position={[0, 40, -80]}
+          opacity={0.5}
+          position={[0, -20, -60]}
         />
       </Clouds>
 
-      {/* Top layer clouds */}
+      {/* Top accent clouds */}
       <Clouds material={THREE.MeshStandardMaterial}>
         <Cloud
-          segments={50}
+          segments={40}
           bounds={[140, 30, 140]}
-          volume={15}
-          color="white"
+          volume={12}
+          color="#ffffff"
           fade={30}
           speed={0.03}
-          opacity={0.2}
-          position={[0, 50, 0]}
-        />
-      </Clouds>
-
-      {/* Bottom layer clouds */}
-      <Clouds material={THREE.MeshStandardMaterial}>
-        <Cloud
-          segments={50}
-          bounds={[140, 30, 140]}
-          volume={15}
-          color="#4966ff"
-          fade={30}
-          speed={0.03}
-          opacity={0.2}
-          position={[0, -50, 0]}
+          opacity={0.45}
+          position={[0, 40, 0]}
         />
       </Clouds>
     </group>
