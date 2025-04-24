@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './TotalProcess.module.css';
 import Image from 'next/image';
 
@@ -32,6 +32,19 @@ const features = [
 ];
 
 const TotalProcess: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <section className={styles.totalProcess} id="process">
       <div className={styles.container}>
@@ -39,7 +52,7 @@ const TotalProcess: React.FC = () => {
           <div className={styles.textContent}>
             <h2 className={styles.title}>Giving voice to your vision</h2>
             <p className={styles.subtitle}>
-            Vox Studios handles everything from voice creation to final mastering — so you can focus on campaigns, not casting.
+              Vox Studios handles everything from voice creation to final mastering — so you can focus on campaigns, not casting.
             </p>
             
             <div className={styles.features}>
@@ -55,15 +68,17 @@ const TotalProcess: React.FC = () => {
             </div>
           </div>
 
-          <div className={styles.imageContainer}>
-            <Image
-              src="/images/feedback-front.png"
-              alt="Voice Creation Process"
-              width={600}
-              height={400}
-              className={styles.mockupImage}
-            />
-          </div>
+          {!isMobile && (
+            <div className={styles.imageContainer}>
+              <Image
+                src="/images/feedback-front.png"
+                alt="Voice Creation Process"
+                width={600}
+                height={400}
+                className={styles.mockupImage}
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -97,5 +97,33 @@ body {
 @media (max-width: 768px) {
   .section {
     padding: 3rem 1rem;
+    min-height: auto;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  /* Mobile-specific vertical layout styles */
+  .vertical-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .vertical-layout > section {
+    min-height: auto;
+    padding: 4rem 1rem;
+  }
+
+  /* Ensure proper spacing between sections */
+  .vertical-layout > section + section {
+    margin-top: 2rem;
+  }
+
+  /* Consistent container padding for all sections */
+  .vertical-layout .container,
+  section .container {
+    padding: 0 1rem;
   }
 } 

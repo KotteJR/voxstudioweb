@@ -36,28 +36,44 @@ const HeroCanvas = () => {
         autoRotate
         autoRotateSpeed={1.5}
       />
-      <color attach="background" args={['#000000']} />
-      <fog attach="fog" args={['#000000', 30, 90]} />
-      <ambientLight intensity={0.2} />
+      <color attach="background" args={['#000033']} />
+      <fog attach="fog" args={['#000033', 30, 90]} />
+      
+      {/* Enhanced lighting setup */}
+      <ambientLight intensity={0.3} color="#4966ff" />
       <spotLight
         position={[10, 10, 10]}
-        angle={0.3}
+        angle={0.4}
         penumbra={1}
-        intensity={1.5}
+        intensity={2}
+        color="#ffffff"
         castShadow
       />
       <spotLight
         position={[-10, -10, 10]}
-        angle={0.3}
+        angle={0.4}
         penumbra={1}
-        intensity={1}
+        intensity={1.5}
+        color="#4966ff"
         castShadow
       />
+      <pointLight
+        position={[0, 20, 0]}
+        intensity={0.5}
+        color="#ffffff"
+      />
+      <pointLight
+        position={[0, -20, 0]}
+        intensity={0.3}
+        color="#4966ff"
+      />
+      
       <Environment
         preset="night"
         background={false}
-        blur={0.8}
+        blur={1}
       />
+      
       <Suspense fallback={<LoadingFallback />}>
         <CloudsBackground />
         <LogoModel scale={0.2} />

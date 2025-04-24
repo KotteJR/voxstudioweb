@@ -90,8 +90,19 @@
 }
 
 @media (max-width: 768px) {
-  .stats {
-    padding: 6rem 1.5rem;
+
+
+  .container {
+    padding: 6rem 2rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
   }
 
   .title {
@@ -99,17 +110,26 @@
   }
 
   .statValue {
-    font-size: 3.5rem;
+    font-size: 3rem;
+  }
+
+  .statItem {
+    padding: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .stats {
-    padding: 4rem 1rem;
+    padding: 0;
+  }
+
+  .container {
+    padding: 6rem 1rem;
   }
 
   .statsGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .title {
@@ -117,6 +137,6 @@
   }
 
   .statValue {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 } 
