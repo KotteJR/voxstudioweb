@@ -41,7 +41,6 @@ export default function Home() {
       <Hero />
       <AIDemo />
       <GlobalAccent />
-      <TotalProcess />
       <VoiceProcess2 />
       <ContactUs />
     </div>
