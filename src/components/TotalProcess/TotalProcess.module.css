@@ -296,11 +296,16 @@
 }
 
 @media (max-width: 768px) {
-  .container {
+  .totalProcess {
     padding: 2rem 1rem !important;
+    min-height: auto;
   }
 
-  .grid {
+  .container {
+    padding: 0;
+  }
+
+  .content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -344,7 +349,11 @@
 
 @media (max-width: 480px) {
   .totalProcess {
-    padding: 2rem 1rem;
+    padding: 2rem 1rem !important;
+  }
+
+  .container {
+    padding: 0;
   }
 
   .featureItem {

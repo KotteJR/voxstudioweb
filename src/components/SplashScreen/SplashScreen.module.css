@@ -153,6 +153,27 @@
   transition: all 0.2s ease;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdownItem.disabled {
+  cursor: not-allowed;
+  color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.comingSoon {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
 }
 
 .dropdownItem:hover {

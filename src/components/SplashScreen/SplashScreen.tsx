@@ -25,17 +25,19 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onEnter }) => {
   }, []);
 
   const languages = [
-    { lang: 'English', code: 'gb' },
-    { lang: 'Serbian', code: 'rs' },
-    { lang: 'Macedonian', code: 'mk' },
-    { lang: 'Croatian', code: 'hr' },
-    { lang: 'Bulgarian', code: 'bg' },
-    { lang: 'Swedish', code: 'se' }
+    { lang: 'English', code: 'gb', available: true },
+    { lang: 'Serbian', code: 'rs', available: false },
+    { lang: 'Macedonian', code: 'mk', available: false },
+    { lang: 'Croatian', code: 'hr', available: false },
+    { lang: 'Bulgarian', code: 'bg', available: false },
+    { lang: 'Swedish', code: 'se', available: false }
   ];
 
-  const handleLanguageSelect = (language: string) => {
-    setSelectedLanguage(language);
-    setIsDropdownOpen(false);
+  const handleLanguageSelect = (language: string, available: boolean) => {
+    if (available) {
+      setSelectedLanguage(language);
+      setIsDropdownOpen(false);
+    }
   };
 
   const handleEnter = () => {
@@ -101,10 +103,11 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onEnter }) => {
                       {languages.map((item) => (
                         <button
                           key={item.code}
-                          className={styles.dropdownItem}
-                          onClick={() => handleLanguageSelect(item.lang)}
+                          className={`${styles.dropdownItem} ${!item.available ? styles.disabled : ''}`}
+                          onClick={() => handleLanguageSelect(item.lang, item.available)}
                         >
                           {item.lang}
+                          {!item.available && <span className={styles.comingSoon}>Coming Soon</span>}
                         </button>
                       ))}
                     </motion.div>
