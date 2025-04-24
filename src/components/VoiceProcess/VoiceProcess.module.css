@@ -242,18 +242,18 @@
   }
 
   .sectionLabel {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.5;
   }
 
   .sectionTitle {
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1.2;
     margin-bottom: 0.5rem;
   }
 
   .sectionDescription {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.5;
   }
 }
