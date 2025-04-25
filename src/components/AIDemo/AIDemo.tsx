@@ -1,7 +1,13 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
+import Lottie from 'lottie-react';
 import styles from './AIDemo.module.css';
+
+// Import Lottie animations
+import languageAnimation from '/public/animations/Animation - 1745507121736.json';
+import workflowAnimation from '/public/animations/Animation - 1745507043219.json';
+import agencyAnimation from '/public/animations/Animation - 1745506965015.json';
 
 const AIDemo: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -41,6 +47,10 @@ const AIDemo: React.FC = () => {
       videoRef.current.muted = !videoRef.current.muted;
       setIsMuted(!isMuted);
     }
+  };
+
+  const lottieStyle = {
+    filter: 'brightness(0) invert(1)',
   };
 
   return (
@@ -87,7 +97,9 @@ const AIDemo: React.FC = () => {
 
       <div className={styles.features}>
         <div className={styles.featureItem}>
-          <div className={styles.featureIcon}></div>
+          <div className={styles.featureIcon}>
+            <Lottie animationData={agencyAnimation} loop={true} style={lottieStyle} />
+          </div>
           <h3 className={styles.featureTitle}>Adriatic Languages</h3>
           <p className={styles.featureDescription}>
             Voiceovers delivered in 6 Balkan languages — each adapted with cultural precision and performed with native vocal authenticity.
@@ -96,8 +108,7 @@ const AIDemo: React.FC = () => {
 
         <div className={styles.featureItem}>
           <div className={styles.featureIcon}>
-            <div className={styles.workflowLine}></div>
-            <div className={styles.workflowLine}></div>
+            <Lottie animationData={workflowAnimation} loop={true} style={lottieStyle} />
           </div>
           <h3 className={styles.featureTitle}>Human Workflow</h3>
           <p className={styles.featureDescription}>
@@ -106,7 +117,9 @@ const AIDemo: React.FC = () => {
         </div>
 
         <div className={styles.featureItem}>
-          <div className={styles.featureIcon}></div>
+          <div className={styles.featureIcon}>
+            <Lottie animationData={agencyAnimation} loop={true} style={lottieStyle} />
+          </div>
           <h3 className={styles.featureTitle}>Built For Agencies</h3>
           <p className={styles.featureDescription}>
             Tight deadlines? Multi-market launches? We've done it for Nike, Telekom, L'Oréal, and we can do it for you.

@@ -38,7 +38,7 @@ const TotalProcess: React.FC = () => {
         <div className={styles.content}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/feedback-front.png"
+              src="/images/screen.png"
               alt="Vox Studios Feedback Interface"
               width={700}
               height={350}

@@ -11,7 +11,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 2rem 2rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -23,12 +23,11 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding-bottom: 4rem;
 }
 
 .imageWrapper {
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
   background-color: #fff;
 }
