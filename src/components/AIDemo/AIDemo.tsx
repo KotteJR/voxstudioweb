@@ -1,13 +1,8 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
-import Lottie from 'lottie-react';
 import styles from './AIDemo.module.css';
-
-// Import Lottie animations
-import languageAnimation from '/public/animations/Animation - 1745507121736.json';
-import workflowAnimation from '/public/animations/Animation - 1745507043219.json';
-import agencyAnimation from '/public/animations/Animation - 1745506965015.json';
+import FeatureIcon from './FeatureIcon';
 
 const AIDemo: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -47,10 +42,6 @@ const AIDemo: React.FC = () => {
       videoRef.current.muted = !videoRef.current.muted;
       setIsMuted(!isMuted);
     }
-  };
-
-  const lottieStyle = {
-    filter: 'brightness(0) invert(1)',
   };
 
   return (
@@ -98,7 +89,7 @@ const AIDemo: React.FC = () => {
       <div className={styles.features}>
         <div className={styles.featureItem}>
           <div className={styles.featureIcon}>
-            <Lottie animationData={agencyAnimation} loop={true} style={lottieStyle} />
+            <FeatureIcon type="language" />
           </div>
           <h3 className={styles.featureTitle}>Adriatic Languages</h3>
           <p className={styles.featureDescription}>
@@ -108,7 +99,7 @@ const AIDemo: React.FC = () => {
 
         <div className={styles.featureItem}>
           <div className={styles.featureIcon}>
-            <Lottie animationData={workflowAnimation} loop={true} style={lottieStyle} />
+            <FeatureIcon type="workflow" />
           </div>
           <h3 className={styles.featureTitle}>Human Workflow</h3>
           <p className={styles.featureDescription}>
@@ -118,7 +109,7 @@ const AIDemo: React.FC = () => {
 
         <div className={styles.featureItem}>
           <div className={styles.featureIcon}>
-            <Lottie animationData={agencyAnimation} loop={true} style={lottieStyle} />
+            <FeatureIcon type="agency" />
           </div>
           <h3 className={styles.featureTitle}>Built For Agencies</h3>
           <p className={styles.featureDescription}>

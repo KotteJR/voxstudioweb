@@ -13,7 +13,9 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true
-  }
+  },
+  // Enable fast refresh
+  reactStrictMode: true
 }
 
 module.exports = nextConfig 

@@ -1,13 +1,18 @@
 .audioEngineering {
   color: #fff;
-  padding: 3rem 0rem;
   position: relative;
   z-index: 1;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
+  padding: 2rem 4rem;
 }
 
 .sectionLabel {
@@ -244,7 +249,7 @@
 .streamlineFeatures {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   position: relative;
   min-height: 100vh;

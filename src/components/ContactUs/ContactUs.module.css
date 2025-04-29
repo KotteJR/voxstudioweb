@@ -1,5 +1,6 @@
 .contactUs {
-  padding: 2rem 2rem;
+  min-height: 100vh;
+  padding: 2rem 4rem;
   position: relative;
   z-index: 1;
 }

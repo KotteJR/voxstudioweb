@@ -9,10 +9,10 @@
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 2rem;
+  max-width: 1600px;
   width: 100%;
+  margin: 0 auto;
+  padding: 2rem 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +23,7 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  width: 100%;
 }
 
 .imageWrapper {
@@ -35,7 +36,7 @@
 .mockupImage {
   width: 100%;
   height: auto;
-  max-height: 350px;
+  max-height: 300px;
   object-fit: contain;
 }
 
@@ -252,7 +253,7 @@
 
 @media (max-width: 640px) {
   .container {
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
   
   .features {

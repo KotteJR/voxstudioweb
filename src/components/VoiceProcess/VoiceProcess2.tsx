@@ -3,11 +3,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './VoiceProcess.module.css';
 
-
-
 const VoiceProcess2: React.FC = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sectionsRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const lastActiveRef = useRef(0);
 
   const sections = [
     {
@@ -19,7 +19,7 @@ const VoiceProcess2: React.FC = () => {
     {
       label: "Stage 2",
       title: "We craft the voice",
-      description: "Using advanced AI synthesis, we generate voice options tailored to your campaign’s needs. Each voice is shaped by emotion, pacing, dialect, and delivery style. The result is a voice that feels human — because it's designed that way.",
+      description: "Using advanced AI synthesis, we generate voice options tailored to your campaign's needs. Each voice is shaped by emotion, pacing, dialect, and delivery style. The result is a voice that feels human — because it's designed that way.",
       image: "/images/stage2.png"
     },
     {
@@ -39,33 +39,40 @@ const VoiceProcess2: React.FC = () => {
   useEffect(() => {
     if (!sectionsRef.current) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const target = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            const index = Number(target.getAttribute('data-index'));
-            setActiveSection(index);
-            target.classList.add(styles.active);
-          } else {
-            target.classList.remove(styles.active);
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        const target = entry.target as HTMLElement;
+        const index = Number(target.getAttribute('data-index'));
+        
+        if (entry.intersectionRatio > 0.6 && lastActiveRef.current !== index) {
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
           }
-        });
-      },
-      {
-        root: null,
-        rootMargin: '-45% 0px -45% 0px',
-        threshold: 0
-      }
-    );
+
+          timeoutRef.current = setTimeout(() => {
+            setActiveSection(index);
+            lastActiveRef.current = index;
+          }, 100);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null,
+      rootMargin: '-20% 0px -30% 0px',
+      threshold: [0.6]
+    });
 
     const sections = sectionsRef.current.children;
     Array.from(sections).forEach(section => observer.observe(section));
 
-    return () => observer.disconnect();
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      observer.disconnect();
+    };
   }, []);
-
-  
 
   return (
     <section className={styles.section}>
@@ -79,7 +86,7 @@ const VoiceProcess2: React.FC = () => {
             {sections.map((section, index) => (
               <div 
                 key={index} 
-                className={styles.featureCard}
+                className={`${styles.featureCard} ${activeSection === index ? styles.active : ''}`}
                 data-index={index}
               >
                 <div className={styles.cardContent}>

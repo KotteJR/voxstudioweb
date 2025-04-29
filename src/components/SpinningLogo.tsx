@@ -31,7 +31,7 @@ export default function SpinningLogo() {
           className="w-full h-full"
         >
           <circle cx="100" cy="100" r="90" fill="none" stroke="white" strokeWidth="4"/>
-          <text x="100" y="110" fontFamily="Arial" fontSize="24" fontWeight="bold" textAnchor="middle" fill="white">VOX</text>
+          <text x="100" y="110" fontFamily="Arial" fontSize="24" fontWeight="bold" textAnchor="middle" fill="white">VOKS</text>
           <text x="100" y="140" fontFamily="Arial" fontSize="24" fontWeight="bold" textAnchor="middle" fill="white">STUDIOS</text>
         </svg>
       </div>
