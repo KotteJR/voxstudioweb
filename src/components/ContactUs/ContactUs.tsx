@@ -5,7 +5,7 @@ import styles from './ContactUs.module.css';
 import emailjs from '@emailjs/browser';
 
 const EMAILJS_PUBLIC_KEY = "dLX5rKssaDknwe6tr";
-const EMAILJS_SERVICE_ID = "service_qqxvxwp";
+const EMAILJS_SERVICE_ID = "service_v1e1268";
 const EMAILJS_TEMPLATE_ID = "template_4zpm2yt";
 
 const ContactUs: React.FC = () => {
@@ -55,7 +55,6 @@ const ContactUs: React.FC = () => {
       console.log('Sending email with params:', {
         service_id: EMAILJS_SERVICE_ID,
         template_id: EMAILJS_TEMPLATE_ID,
-        user_id: EMAILJS_PUBLIC_KEY,
         template_params: {
           user_name: formData.user_name,
           user_email: formData.user_email,
