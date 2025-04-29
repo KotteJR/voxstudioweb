@@ -8,12 +8,11 @@ const EMAILJS_PUBLIC_KEY = "dLX5rKssaDknwe6tr";
 const EMAILJS_SERVICE_ID = "service_qqxvxwp";
 const EMAILJS_TEMPLATE_ID = "template_4zpm2yt";
 
-// Initialize EmailJS
-useEffect(() => {
-  emailjs.init(EMAILJS_PUBLIC_KEY);
-}, []);
-
 const ContactUs: React.FC = () => {
+  useEffect(() => {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }, []);
+
   const [formData, setFormData] = useState({
     user_name: '',
     user_email: '',
