@@ -4,6 +4,14 @@ import React from 'react';
 import styles from './Hero.module.css';
 
 const Hero: React.FC = () => {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
@@ -15,7 +23,7 @@ const Hero: React.FC = () => {
             Bring your campaigns to life in Serbian, Croatian, Bosnian, Slovenian, Macedonian, and Bulgarian — with native-level nuance, cultural accuracy, and studio-grade quality, powered by AI and refined by humans.
           </p>
           <div className={styles.buttonContainer}>
-            <a href="/contact" className={styles.button}>
+            <a href="#contact" className={styles.button} onClick={scrollToContact}>
               Contact Us
               <svg 
                 className={styles.arrow}
@@ -34,7 +42,7 @@ const Hero: React.FC = () => {
                 />
               </svg>
             </a>
-            <a href="/demo" className={styles.button}>
+            <a href="#contact" className={styles.button} onClick={scrollToContact}>
               Request Demo
               <svg 
                 className={styles.arrow}
