@@ -1,17 +1,30 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ContactUs.module.css';
+import emailjs from '@emailjs/browser';
+
+// Initialize EmailJS with your public key
+emailjs.init("dLX5rKssaDknwe6tr");
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
+    user_name: '',
+    user_email: '',
+    user_phone: '',
     message: '',
     privacyPolicy: false
   });
+
+  const [status, setStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({
+    type: null,
+    message: '',
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -28,10 +41,48 @@ const ContactUs: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    
+    const templateParams = {
+      user_name: formData.user_name,
+      user_email: formData.user_email,
+      user_phone: formData.user_phone,
+      message: formData.message
+    };
+
+    try {
+      const response = await emailjs.send(
+        "service_qqxvxwp", // Service ID
+        "template_4zpm2yt", // Template ID
+        templateParams
+      );
+
+      console.log("SUCCESS!", response.status, response.text);
+      
+      setStatus({
+        type: 'success',
+        message: 'Thank you for your message. We will get back to you soon!'
+      });
+
+      setFormData({
+        user_name: '',
+        user_email: '',
+        user_phone: '',
+        message: '',
+        privacyPolicy: false
+      });
+
+    } catch (error) {
+      console.log("FAILED...", error);
+      setStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -40,22 +91,28 @@ const ContactUs: React.FC = () => {
         <div className={styles.subtitle}>Reach Out to Us</div>
         <h2 className={styles.title}>We're Here to Help</h2>
         <p className={styles.description}>
-        We don’t offer fixed packages — every quote is tailored to your campaign’s scope, complexity, and creative needs.
+          We don't offer fixed packages — every quote is tailored to your campaign's scope, complexity, and creative needs.
         </p>
+
+        {status.type && (
+          <div className={`${styles.alert} ${styles[status.type]}`}>
+            {status.message}
+          </div>
+        )}
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputRow}>
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                First Name
+                Name
                 <span className={styles.required}> *</span>
               </label>
               <input
                 type="text"
-                name="firstName"
+                name="user_name"
                 className={styles.input}
-                placeholder="Your First Name"
-                value={formData.firstName}
+                placeholder="Your Name"
+                value={formData.user_name}
                 onChange={handleChange}
                 required
               />
@@ -63,35 +120,19 @@ const ContactUs: React.FC = () => {
 
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                Last Name
+                Email Address
                 <span className={styles.required}> *</span>
               </label>
               <input
-                type="text"
-                name="lastName"
+                type="email"
+                name="user_email"
                 className={styles.input}
-                placeholder="Your Last Name"
-                value={formData.lastName}
+                placeholder="Your Email"
+                value={formData.user_email}
                 onChange={handleChange}
                 required
               />
             </div>
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.label}>
-              Email Address
-              <span className={styles.required}> *</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              className={styles.input}
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
           </div>
 
           <div className={styles.formGroup}>
@@ -101,10 +142,10 @@ const ContactUs: React.FC = () => {
             </label>
             <input
               type="tel"
-              name="phone"
+              name="user_phone"
               className={styles.input}
               placeholder="+123 456 7890"
-              value={formData.phone}
+              value={formData.user_phone}
               onChange={handleChange}
               required
             />
@@ -140,8 +181,12 @@ const ContactUs: React.FC = () => {
             </label>
           </div>
 
-          <button type="submit" className={styles.submitButton}>
-            Submit
+          <button 
+            type="submit" 
+            className={styles.submitButton}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Sending...' : 'Submit'}
           </button>
         </form>
       </div>
