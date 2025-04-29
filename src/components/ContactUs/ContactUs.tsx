@@ -4,8 +4,14 @@ import React, { useState, useEffect } from 'react';
 import styles from './ContactUs.module.css';
 import emailjs from '@emailjs/browser';
 
-// Initialize EmailJS with your public key
-emailjs.init("dLX5rKssaDknwe6tr");
+const EMAILJS_PUBLIC_KEY = "dLX5rKssaDknwe6tr";
+const EMAILJS_SERVICE_ID = "service_qqxvxwp";
+const EMAILJS_TEMPLATE_ID = "template_4zpm2yt";
+
+// Initialize EmailJS
+useEffect(() => {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+}, []);
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -44,41 +50,55 @@ const ContactUs: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    const templateParams = {
-      user_name: formData.user_name,
-      user_email: formData.user_email,
-      user_phone: formData.user_phone,
-      message: formData.message
-    };
+    setStatus({ type: null, message: '' });
 
     try {
+      console.log('Sending email with params:', {
+        service_id: EMAILJS_SERVICE_ID,
+        template_id: EMAILJS_TEMPLATE_ID,
+        user_id: EMAILJS_PUBLIC_KEY,
+        template_params: {
+          user_name: formData.user_name,
+          user_email: formData.user_email,
+          user_phone: formData.user_phone,
+          message: formData.message
+        }
+      });
+
       const response = await emailjs.send(
-        "service_qqxvxwp", // Service ID
-        "template_4zpm2yt", // Template ID
-        templateParams
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          user_name: formData.user_name,
+          user_email: formData.user_email,
+          user_phone: formData.user_phone,
+          message: formData.message
+        }
       );
 
-      console.log("SUCCESS!", response.status, response.text);
-      
-      setStatus({
-        type: 'success',
-        message: 'Thank you for your message. We will get back to you soon!'
-      });
+      console.log('EmailJS Response:', response);
 
-      setFormData({
-        user_name: '',
-        user_email: '',
-        user_phone: '',
-        message: '',
-        privacyPolicy: false
-      });
+      if (response.status === 200) {
+        setStatus({
+          type: 'success',
+          message: 'Thank you for your message. We will get back to you soon!'
+        });
 
-    } catch (error) {
-      console.log("FAILED...", error);
+        setFormData({
+          user_name: '',
+          user_email: '',
+          user_phone: '',
+          message: '',
+          privacyPolicy: false
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error: any) {
+      console.error('Failed to send email:', error);
       setStatus({
         type: 'error',
-        message: 'Failed to send message. Please try again later.'
+        message: error?.text || 'Failed to send message. Please try again later.'
       });
     } finally {
       setIsSubmitting(false);
